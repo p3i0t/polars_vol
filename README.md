@@ -1,6 +1,31 @@
-# polars-vol
+<h1 align="center">polars-vol</h1>
 
-A polars plugin implemented in rust for volatility trading.
+<p align="center">
+  Black-Scholes pricing, analytical Greeks and implied volatility as
+  Rust-powered <a href="https://pola.rs">Polars</a> expressions — elementwise,
+  columnar, and streaming-parallel.
+</p>
+
+<p align="center">
+  <a href="https://pypi.org/project/polars-vol/">
+    <img src="https://img.shields.io/pypi/v/polars-vol.svg" alt="PyPI version" />
+  </a>
+  <a href="https://pypi.org/project/polars-vol/">
+    <img src="https://img.shields.io/pypi/pyversions/polars-vol.svg" alt="Python versions" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
+  </a>
+  <a href="https://github.com/p3i0t/polars_vol/actions/workflows/publish_to_pypi.yml">
+    <img src="https://github.com/p3i0t/polars_vol/actions/workflows/publish_to_pypi.yml/badge.svg" alt="Tests" />
+  </a>
+  <a href="https://p3i0t.github.io/polars_vol/">
+    <img src="https://github.com/p3i0t/polars_vol/actions/workflows/docs.yml/badge.svg" alt="Docs" />
+  </a>
+  <a href="https://pola.rs/">
+    <img src="https://img.shields.io/badge/Works_with-Polars-blue.svg" alt="Works with Polars" />
+  </a>
+</p>
 
 ## Installation
 
