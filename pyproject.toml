@@ -1,0 +1,43 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0", "polars>=1.3.0"]
+build-backend = "maturin"
+
+[project]
+name = "polars-vol"
+description = "Rust-powered Polars expressions for Black-Scholes pricing, Greeks and implied volatility"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+dependencies = ["polars>=1.3.0"]
+authors = [{ name = "p3i0t" }]
+keywords = ["polars", "options", "black-scholes", "implied-volatility", "greeks"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Financial and Insurance Industry",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Rust",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+
+[project.urls]
+Repository = "https://github.com/p3i0t/polars_vol"
+Issues = "https://github.com/p3i0t/polars_vol/issues"
+
+[tool.maturin]
+module-name = "polars_vol._internal"
+exclude = ["site", "dist", "*.ipynb"]
+
+[tool.ruff]
+extend-exclude = ["*.ipynb", "examples/spx_backfill.py"]  # spx example is format-free by design
+
+[[tool.mypy.overrides]]
+module = "polars.utils.udfs"
+ignore_missing_imports = true

@@ -1,0 +1,17 @@
+site_name: polars-vol
+site_url: https://p3i0t.github.io/polars_vol/
+site_description: Rust-powered Polars expressions for option pricing and volatility
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+nav:
+  - Home: index.md
+  - Installation: install.md
+  - Black-Scholes speed comparison: black_scholes_speed.md
+  - Newton vs Halley for implied volatility: newton_vs_halley.md
