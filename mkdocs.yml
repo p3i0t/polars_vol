@@ -14,6 +14,8 @@ markdown_extensions:
   - pymdownx.superfences
 nav:
   - Home: index.md
-  - Installation: install.md
-  - Black-Scholes speed comparison: black_scholes_speed.md
-  - Newton vs Halley for implied volatility: newton_vs_halley.md
+  - Getting Started:
+      - Installation: install.md
+  - User Guide:
+      - Black-Scholes speed comparison: black_scholes_speed.md
+      - Newton vs Halley for implied volatility: newton_vs_halley.md
