@@ -1,6 +1,8 @@
 site_name: polars-vol
 site_url: https://p3i0t.github.io/polars_vol/
 site_description: Rust-powered Polars expressions for option pricing and volatility
+repo_url: https://github.com/p3i0t/polars_vol
+repo_name: p3i0t/polars_vol
 theme:
   name: material
   palette:
