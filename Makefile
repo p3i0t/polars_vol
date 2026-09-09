@@ -13,7 +13,7 @@ install-release:
 	source .venv/bin/activate && maturin develop --release
 
 pre-commit:
-	cargo +nightly fmt --all && cargo clippy --all-features -- -D warnings
+	cargo fmt --all && cargo clippy --all-features -- -D warnings
 	.venv/bin/python -m ruff check . --fix --exit-non-zero-on-fix
 	.venv/bin/python -m ruff format polars_vol tests examples
 	.venv/bin/python -m mypy polars_vol tests
