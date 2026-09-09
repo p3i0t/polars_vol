@@ -1,6 +1,6 @@
 [package]
 name = "polars-vol"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Rust-powered Polars expressions for Black-Scholes pricing, Greeks and implied volatility"
 license = "MIT"
