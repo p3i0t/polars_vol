@@ -338,7 +338,7 @@ fn broadcast_to(s: &Series, len: usize) -> PolarsResult<Series> {
 
 /// Common input plumbing: the five numeric inputs cast to f64, plus the
 /// Boolean `is_call` column, all broadcast to a common length.
-fn bs_inputs(inputs: &[Series]) -> PolarsResult<(Vec<Series>, BooleanChunked)> {
+pub(crate) fn bs_inputs(inputs: &[Series]) -> PolarsResult<(Vec<Series>, BooleanChunked)> {
     polars_ensure!(inputs.len() == 6, InvalidOperation: "black-scholes expects 6 inputs");
     let len = inputs.iter().map(|s| s.len()).max().unwrap_or(0);
     let mut numeric = Vec::with_capacity(5);

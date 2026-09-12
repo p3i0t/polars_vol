@@ -21,6 +21,10 @@ pre-commit:
 test:
 	.venv/bin/python -m pytest tests
 
+test-rust:
+	DYLD_LIBRARY_PATH=$$(python -c 'import sysconfig; print(sysconfig.get_config_var("LIBDIR"))') \
+		cargo test --no-default-features
+
 demo: install-release
 	source .venv/bin/activate && PYTHONPATH=. python examples/speed_vs_numpy.py
 

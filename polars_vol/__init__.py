@@ -174,3 +174,49 @@ def iv_and_greeks(
         is_elementwise=True,
         kwargs={"method": method},
     )
+
+
+def monte_carlo(
+    strike: IntoExprColumn,
+    spot: IntoExprColumn,
+    vol: IntoExprColumn,
+    time_to_expiry: IntoExprColumn,
+    rate: IntoExprColumn,
+    is_call: IntoExprColumn,
+    *,
+    n_paths: int = 100_000,
+    seed: int = 42,
+) -> pl.Expr:
+    """Price a European option by Monte Carlo simulation.
+
+    Simulates ``n_paths`` terminal stock prices under the lognormal
+    geometric-Brownian-motion model and returns a struct with ``price``
+    (the average discounted payoff) and ``error`` (the standard error of
+    that mean, which scales as ``1/sqrt(n_paths)``). Use
+    ``.unnest("monte_carlo")`` to expand them into columns. This is the
+    brute-force counterpart to :func:`black_scholes`.
+
+    The ``n_paths`` standard-normal draws are generated once from ``seed``
+    and shared by every row (common random numbers), so Monte Carlo error
+    is correlated across rows but the option surface is smooth in the
+    inputs.
+
+    Parameters
+    ----------
+    strike, spot, vol, time_to_expiry, rate, is_call
+        As in :func:`black_scholes`.
+    n_paths : number of simulated terminal prices (default 100_000).
+    seed : RNG seed (default 42). Results are deterministic for a given
+        ``seed`` and independent of how the column is partitioned.
+
+    Rows with a null in any input are null in both fields. `time_to_expiry
+    <= 0` gives the undiscounted intrinsic value with ``error`` 0.0;
+    `spot <= 0`, `strike <= 0` or `vol <= 0` give 0.0 with ``error`` 0.0.
+    """
+    return register_plugin_function(
+        args=[strike, spot, vol, time_to_expiry, rate, is_call],
+        plugin_path=LIB,
+        function_name="monte_carlo",
+        is_elementwise=True,
+        kwargs={"n_paths": n_paths, "seed": seed},
+    )

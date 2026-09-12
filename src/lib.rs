@@ -1,4 +1,5 @@
 mod black_scholes;
+mod monte_carlo;
 use pyo3::prelude::*;
 use pyo3_polars::PolarsAllocator;
 

@@ -10,8 +10,14 @@ name = "polars_vol"
 crate-type= ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.26.0", features = ["extension-module", "abi3-py39"] }
+pyo3 = { version = "0.26.0", features = ["abi3-py39"] }
 pyo3-polars = { version = "0.25.0", features = ["derive", "dtype-struct"] }
 serde = { version = "1", features = ["derive"] }
 polars = { version = "0.52.0", default-features = false }
+rand = "0.8"
+rand_distr = "0.4"
+
+[features]
+default = ["extension-module"]
+extension-module = ["pyo3/extension-module"]
 
